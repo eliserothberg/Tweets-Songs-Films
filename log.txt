@@ -1,0 +1,128 @@
+do-what-it-says
+Artist Name: Backstreet Boys
+Song Title: I Want It That Way
+Link to url: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6
+Album: The Hits--Chapter One
+do-what-it-says
+Title: The Shining
+Year: 1980
+IMDb Rating: 8.4
+Country: USA, UK
+Language: English
+Plot: A family heads to an isolated hotel for the winter where an evil and spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.
+Actors: Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers
+Rotten Tomato Rating: 8.5
+Rotten Tomato URL: http://www.rottentomatoes.com/m/shining/
+movie-this
+Title: Mr. Nobody
+Year: 2009
+IMDb Rating: 7.9
+Country: Belgium, Germany, Canada, France
+Language: English, Mohawk
+Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham
+Rotten Tomato Rating: 6.6
+Rotten Tomato URL: http://www.rottentomatoes.com/m/mr-nobody/
+movie-this,idiocracy
+Title: Idiocracy
+Year: 2006
+IMDb Rating: 6.6
+Country: USA
+Language: English
+Plot: Private Joe Bauers, the definition of "average American", is selected by the Pentagon to be the guinea pig for a top-secret hibernation program. Forgotten, he awakes five centuries in the future. He discovers a society so incredibly dumbed down that he's easily the most intelligent person alive.
+Actors: Luke Wilson, Maya Rudolph, Dax Shepard, Terry Crews
+Rotten Tomato Rating: 6.5
+Rotten Tomato URL: http://www.rottentomatoes.com/m/idiocracy/
+spotify-this-song
+Artist Name: Ace of Base
+Song Title: The Sign
+Link to url: https://p.scdn.co/mp3-preview/177e65fc2b8babeaf9266c0ad2a1cb1e18730ae4
+Album: The Sign (US Album) [Remastered]
+spotify-this-song,sail
+Artist Name: AWOLNATION
+Song Title: Sail
+Link to url: https://p.scdn.co/mp3-preview/9a7c9ece7575d0bce24d8a24c0f35f48853655cb
+Album: Megalithic Symphony Deluxe
+Command: spotify-this-song,sail
+
+Artist Name: AWOLNATION
+Song Title: Sail
+Link to url: https://p.scdn.co/mp3-preview/9a7c9ece7575d0bce24d8a24c0f35f48853655cb
+Album: Megalithic Symphony Deluxe
+Command: spotify-this-song,3am
+
+Artist Name: Matchbox Twenty
+Song Title: 3AM
+Link to url: https://p.scdn.co/mp3-preview/cb68c9ae8925bb3fc45544e5f21de17df18b957d
+Album: Yourself Or Someone Like You
+
+Command: spotify-this-song,los,angeles
+
+Artist Name: blink-182
+Song Title: Los Angeles
+Link to url: https://p.scdn.co/mp3-preview/7d3a184cdea5c1b48bc524deb2126ed5ae27d292
+Album: California
+
+Entered in console: spotify-this-song,california,dreamin
+
+Artist Name: Freischwimmer
+Song Title: California Dreamin
+Link to url: https://p.scdn.co/mp3-preview/9d3a449567e04ecfba65feedc2a2c48a29e6d17e
+Album: California Dreamin
+
+Entered in console: my-tweets
+
+Tweet: The possession of knowledge does not kill the sense of wonder and mystery. There is always more mystery. -- Anais Nin
+Posted: 
+Tweet: Never attribute to malice that which is adequately explained by stupidity. -- Hanlon’s Razor
+Posted: 
+Tweet: Many people would sooner die than think; In fact, they do so. -- Bertrand Russell
+Posted: 
+Tweet: Hey, only 16 more tweets to go!
+Posted: 
+Tweet: There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy". -- William Shakespeare
+Posted: 
+Tweet: Reality is that which, when you stop believing in it, doesn't go away. -- Philip K. Dick
+Posted: 
+Tweet: RT @neiltyson: Objective truths are established by evidence. Personal truths by faith. Political truths by incessant repetition.
+Posted: 
+Tweet: RT @pattonoswalt: Good job maintaining your shittiness, 2016.  https://t.co/vRo3mC9du6
+Posted: 
+
+Entered in console: my-tweets
+
+Tweet: The possession of knowledge does not kill the sense of wonder and mystery. There is always more mystery. -- Anais Nin
+Posted: Sun Sep 04 2016
+Tweet: Never attribute to malice that which is adequately explained by stupidity. -- Hanlon’s Razor
+Posted: Sun Sep 04 2016
+Tweet: Many people would sooner die than think; In fact, they do so. -- Bertrand Russell
+Posted: Sun Sep 04 2016
+Tweet: Hey, only 16 more tweets to go!
+Posted: Sun Sep 04 2016
+Tweet: There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy". -- William Shakespeare
+Posted: Sun Sep 04 2016
+Tweet: Reality is that which, when you stop believing in it, doesn't go away. -- Philip K. Dick
+Posted: Sun Sep 04 2016
+Tweet: RT @neiltyson: Objective truths are established by evidence. Personal truths by faith. Political truths by incessant repetition.
+Posted: Thu Sep 01 2016
+Tweet: RT @pattonoswalt: Good job maintaining your shittiness, 2016.  https://t.co/vRo3mC9du6
+Posted: Mon Aug 29 2016
+
+Entered in console: my-tweets
+
+Tweet: The possession of knowledge does not kill the sense of wonder and mystery. There is always more mystery. -- Anais Nin
+Posted: Sun Sep 04 2016
+Tweet: Never attribute to malice that which is adequately explained by stupidity. -- Hanlon’s Razor
+Posted: Sun Sep 04 2016
+Tweet: Many people would sooner die than think; In fact, they do so. -- Bertrand Russell
+Posted: Sun Sep 04 2016
+Tweet: Hey, only 16 more tweets to go!
+Posted: Sun Sep 04 2016
+Tweet: There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy". -- William Shakespeare
+Posted: Sun Sep 04 2016
+Tweet: Reality is that which, when you stop believing in it, doesn't go away. -- Philip K. Dick
+Posted: Sun Sep 04 2016
+Tweet: RT @neiltyson: Objective truths are established by evidence. Personal truths by faith. Political truths by incessant repetition.
+Posted: Thu Sep 01 2016
+Tweet: RT @pattonoswalt: Good job maintaining your shittiness, 2016.  https://t.co/vRo3mC9du6
+Posted: Mon Aug 29 2016

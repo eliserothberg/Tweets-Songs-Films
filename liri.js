@@ -92,12 +92,12 @@ function movieThis() {
 
       request(queryUrl, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-        }
+        
         
         var addMovie = ("Title: " + JSON.parse(body)["Title"]+ "\n" + "Year: "
         + JSON.parse(body)["Year"]+ "\n"
-        + "IMDb Rating: " + JSON.parse(body)["imdbRating"] 
-        + "\n" + "Country: " + JSON.parse(body)["Country"]+ "\n"
+        + "IMDb Rating: " + JSON.parse(body)["imdbRating"] + "\n" 
+        + "Country: " + JSON.parse(body)["Country"]+ "\n"
         + "Language: " + JSON.parse(body)["Language"]+ "\n"
         + "Plot: " + JSON.parse(body)["Plot"]+ "\n"
         + "Actors: " + JSON.parse(body)["Actors"]+ "\n" 
@@ -105,6 +105,7 @@ function movieThis() {
         + "Rotten Tomato URL: " + JSON.parse(body)["tomatoURL"]+ "\n");
          //print out response
          console.log(addMovie);
+       }
         //add response to log
           fs.appendFile('log.txt', addMovie, function (err) {
 
@@ -170,7 +171,7 @@ function tweetThis() {
           }
               
           var addTweets = ("Tweet: " + tweets[i].text + "\n"
-          + "Posted: " + postDate + year + "\n");
+          + "Posted: " + postDate + year + "\n" + "\n");
           //print out data
           console.log(addTweets);
           //add to log

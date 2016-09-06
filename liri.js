@@ -1,12 +1,10 @@
 var SpotifyWebApi = require('spotify-web-api-node');
 var twitter = require('twitter');
 var request = require('request');
-var replace = require('replace');
 var omdb = require('omdb');
 var fs = require("fs");
 
 var tKeys = require("../liri-node-app/keys.js");
-var random = require("../liri-node-app/random.txt");
 
 var spotifyApi = new SpotifyWebApi({
   clientId : 'fcecfc72172e4cd267473117a17cbd4d',
@@ -31,93 +29,28 @@ var postDate = [];
 var year = [];
 var tweetRandom;
 var randomLine;
+var randomArray;
 
-fs.readFile("random.txt", "utf8", function(error, data) {
-        if(error) {
-            return console.log(error);
-        }
-        console.log(data)
-    });
-
-// require('module');
-// exports = module.exports = function() {
-
-// }
-// exports.random;
-
-// console.log("\n\tMy File");
-// console.log(("\t========\n"))
-// fs.readFile("random.txt", function(err, data) {
-//   console.log("file and " + data);
-// });
-
-// fs.readFile("random.txt", "utf8", function (error, data) {
-//     if(error) throw error;
-// replace({
-//   regex: "movie-this",
-//   replacement: "'movie'this'",
-//   paths: ['random.txt'],
-//   recursive: true,
-//   silent: true,
-// });
-// })
-
-// replace 'movie-this' '"movie-this"' random.txt
-
-// fs.readFile('random.txt', 'utf8', function(err, data) {
-//     if (err) {
-//       return console.log(err);
-//     }
-//       files.forEach(function(item, index, array) {
-
-//     var result = data.replace('movie-this',"'movie-this'");
-//     fs.writeFile('random.txt', result, 'utf8', function(err) {
-//         if (err) {
-//            return console.log(err);
-//         };
-//     });
-// });
-//     });
-
-// fs.readFileSync('random.txt', 'utf-8', function(err, data) {
-// console.log("readRandom =" + data);
-// });
+//If 'do-what-it-says' entered, get random instruction from the random.txt page
 function randomThis() {
-
 
   if (userOption === 'do-what-it-says') {
 
     fs.readFile("random.txt", "utf8", function (error, data) {
+    
     if(error) throw error;
-      var lines = data.split('\n');
-      randomLine = lines[Math.floor(Math.random()*lines.length)];
-      // console.log("userOption from random = " + userOption);
-      // console.log("randomLine from random = " + randomLine);
-
-      var comma = randomLine.lastIndexOf(",");
-      // console.log("comma = " + comma);
-      // console.log("randomLine = " + randomLine);
-
-
-      for (i=1; i<comma -1; i++) {
-        firstPart += randomLine[i];
-        part1 = ("'" + firstPart + "'")
-      }
-
-      for (j= (comma+1); j<randomLine.length; j++) {
-        // console.log("randomLine length = " + randomLine.length);
-        // console.log("data[j] = " + part2);
-
-        part2 += randomLine[j];
-      }
+    //randomize line
+    var lines = data.split('\n');
+    randomLine = lines[Math.floor(Math.random()*lines.length)];
+    // console.log("here's the random line: " + randomLine);
+    //split array by comma into option and choice
+    randomArray = randomLine.split(",");
+    // console.log("randomArray0 = " + randomArray[0]);
+    // console.log("randomArray1 = " + randomArray[1]);
      
-      userOption = part1;
-      randomChoice = part2;
-
-      // console.log("userOption after random = " + part1);
-      // console.log("randomChoice after random = " + part2);
-
-
+    userOption = randomArray[0];
+    randomChoice = randomArray[1];
+    //assign query to proper area
       if (userOption == 'spotify-this-song') {
         spotifyThis();
       }
@@ -125,8 +58,7 @@ function randomThis() {
       else if (userOption == 'movie-this') {
         movieThis();
       }
-      if (randomChoice.indexOf('tweets') >= 0) {
-        userOption = 'my-tweets';
+      if (userOption == 'my-tweets') {
         tweetThis();
       } 
     });
@@ -137,44 +69,31 @@ function randomThis() {
         // console.log("tweetRandom2 = " + tweetRandom);
 
 randomThis();
-
+//If movie chosen:
 function movieThis() {
-
+    //Process choice and send query:
   if (userOption === 'movie-this' && userChoice != null){
 
     userChoice = process.argv.slice(3).join("+");
 
-  // Request to the OMDB API with the movie specified 
+    // Request to the OMDB API with the movie specified 
     var queryUrl = 'http://www.omdbapi.com/?t=' + userChoice +'&y=&plot=short&tomatoes=true&r=json';
 
-    // console.log(queryUrl);
-
-  // Request to the queryUrl
-        
+    //if no choice is selected, send this request:
     if (userOption === 'movie-this' && userChoice == '') {
     userChoice = 'Mr Nobody';
       var queryUrl = 'http://www.omdbapi.com/?t=' + userChoice +'&y=&plot=short&tomatoes=true&r=json';
     }
-
+    //if random.txt choice is selected, do this:
      if (userOption === 'movie-this' && randomChoice != null) {
-      var queryUrl = 'http://www.omdbapi.com/?t=' + randomChoice +'&y=&plot=short&tomatoes=true&r=json';
+      userChoice = ("'" + randomChoice + "'");
+      var queryUrl = 'http://www.omdbapi.com/?t=' + userChoice +'&y=&plot=short&tomatoes=true&r=json';
     }
 
       request(queryUrl, function (error, response, body) {
         if (!error && response.statusCode == 200) {
         }
-
-        console.log("Title: " + JSON.parse(body)["Title"]);
-        console.log("Year: " + JSON.parse(body)["Year"]);
-        console.log("IMDb Rating: " + JSON.parse(body)["imdbRating"]);
-        console.log("Country: " + JSON.parse(body)["Country"]);
-        console.log("Language: " + JSON.parse(body)["Language"]);
-        console.log("Plot: " + JSON.parse(body)["Plot"]);
-        console.log("Actors: " + JSON.parse(body)["Actors"]);
-        console.log("Rotten Tomato Rating: " + JSON.parse(body)["tomatoRating"]);
-        console.log("Rotten Tomato URL: " + JSON.parse(body)["tomatoURL"]);
-      
-
+        
         var addMovie = ("Title: " + JSON.parse(body)["Title"]+ "\n" + "Year: "
         + JSON.parse(body)["Year"]+ "\n"
         + "IMDb Rating: " + JSON.parse(body)["imdbRating"] 
@@ -184,7 +103,9 @@ function movieThis() {
         + "Actors: " + JSON.parse(body)["Actors"]+ "\n" 
         + "Rotten Tomato Rating: " + JSON.parse(body)["tomatoRating"]+ "\n"
         + "Rotten Tomato URL: " + JSON.parse(body)["tomatoURL"]+ "\n");
-        
+         //print out response
+         console.log(addMovie);
+        //add response to log
           fs.appendFile('log.txt', addMovie, function (err) {
 
           });
@@ -193,50 +114,45 @@ function movieThis() {
   };
 
 movieThis();
-
+//if song chosen:
 function spotifyThis() {
 
   if (userOption === 'spotify-this-song' && userChoice !== null) {
-
+    //if no song chosen:
     if (userOption === 'spotify-this-song' && userChoice == '') {
         userChoice = 'The Sign';
     }
-
+    //if song chosen from random.txt:
     if (userOption === 'spotify-this-song' && randomChoice != null) {
-    userChoice = randomChoice;
+    userChoice = ("'" + randomChoice + "'");
     }
-  
+    //send query
     spotifyApi.searchTracks('"' + userChoice + '"')
       .then(function(data) {
 
-        var songInfo = data.body.tracks.items[0];
-          
-        console.log("Artist Name: " + songInfo.artists[0].name)
-        console.log("Song Title: " + songInfo.name)
-        console.log("Link to url: " + songInfo.preview_url)
-        console.log("Album: " + songInfo.album.name)
+      var songInfo = data.body.tracks.items[0];
 
-        var addSong = ("Artist Name: " + songInfo.artists[0].name + "\n"
-        + "Song Title: " + songInfo.name + "\n"
-        + "Link to url: " + songInfo.preview_url + "\n"
-        + "Album: " + songInfo.album.name + "\n");
-
-          fs.appendFile('log.txt', addSong, function (err) {
-          });
-                   
-  // console.log("song result = " + songResult);
-      }, 
-        function(err) {
-        console.error(err);
+      var addSong = ("Artist Name: " + songInfo.artists[0].name + "\n"
+      + "Song Title: " + songInfo.name + "\n"
+      + "Link to url: " + songInfo.preview_url + "\n"
+      + "Album: " + songInfo.album.name + "\n");
+      //print out data
+      console.log(addSong);
+      //add data to log
+      fs.appendFile('log.txt', addSong, function (err) {
       });
+    }, 
+    function(err) {
+      console.error(err);
+    });
   };
 };
 spotifyThis();
-
+//if tweets are chosen:
 function tweetThis() {
     
   if (userOption == 'my-tweets') {
-
+    //request 20 tweets from me
     userT.get('statuses/user_timeline', {screen_name: 'elise_rothberg', 
       count: 20}, function(error, tweets, response) {
       
@@ -244,24 +160,23 @@ function tweetThis() {
 
         for (var i=0; i<tweets.length; i++){
           var thisTweet = tweets[i];
-                
+           //get the day, day of the month, and month  
           for (k=0; k<11; k++) {
             postDate += thisTweet.created_at[k];
           }
-          
+          //get the year
           for (m=26; m<30; m++) {
             year += thisTweet.created_at[m];
           }
-           
-          console.log("Tweet: " + tweets[i].text);
-          console.log("Posted: " + postDate + year);
               
           var addTweets = ("Tweet: " + tweets[i].text + "\n"
           + "Posted: " + postDate + year + "\n");
-            
-            fs.appendFile('log.txt', addTweets, function (err) {
-            });
-
+          //print out data
+          console.log(addTweets);
+          //add to log
+          fs.appendFile('log.txt', addTweets, function (err) {
+          });
+          //clear date information
           postDate = [];
           year = [];
         };
@@ -271,19 +186,7 @@ function tweetThis() {
 };
 
 tweetThis();
-
+//add what was typed into the console to the log file
 var addToFile = ("\n" + "Entered in console: " + process.argv.slice(2) + "\n" + "\n");
 fs.appendFile('log.txt', addToFile, function (err) {
 });
-      // console.log("comma = " + comma);
-      // console.log("randomLine = " + randomLine);
-
-
-
-// fs.appendFile('random.txt', partOne, function (err) {
-//   var lines2 = data.split('\n');
-//       for (i=1; i<lines2 -1; i++) {
-//         firstPart += lines2[i];
-//         partOne = ("'" + firstPart + "'")
-//       }
-// });

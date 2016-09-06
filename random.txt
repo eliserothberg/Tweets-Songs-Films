@@ -1,1 +1,14 @@
-'movie-this', "The Shining"
+my-tweets
+spotify-this-song, "I Want It That Way"
+movie-this, "The Shining"
+my-tweets
+movie-this, "Idiocracy"
+my-tweets
+spotify-this-song, "3AM"
+my-tweets
+movie-this, "Running With Scissors"
+my-tweets
+spotify-this-song, "American Girl"
+movie-this, "Saving Private Ryan"
+spotify-this-song, "Sail"
+my-tweets

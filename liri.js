@@ -1,7 +1,7 @@
 var SpotifyWebApi = require('spotify-web-api-node');
-// var inquirer = require('inquirer');
 var twitter = require('twitter');
 var request = require('request');
+var replace = require('replace');
 var omdb = require('omdb');
 var fs = require("fs");
 
@@ -29,60 +29,112 @@ var part2 = [];
 var randomChoice;
 var postDate = [];
 var year = [];
+var tweetRandom;
+var randomLine;
+
+fs.readFile("random.txt", "utf8", function(error, data) {
+        if(error) {
+            return console.log(error);
+        }
+        console.log(data)
+    });
+
+// require('module');
+// exports = module.exports = function() {
+
+// }
+// exports.random;
+
+// console.log("\n\tMy File");
+// console.log(("\t========\n"))
+// fs.readFile("random.txt", function(err, data) {
+//   console.log("file and " + data);
+// });
+
+// fs.readFile("random.txt", "utf8", function (error, data) {
+//     if(error) throw error;
+// replace({
+//   regex: "movie-this",
+//   replacement: "'movie'this'",
+//   paths: ['random.txt'],
+//   recursive: true,
+//   silent: true,
+// });
+// })
+
+// replace 'movie-this' '"movie-this"' random.txt
+
+// fs.readFile('random.txt', 'utf8', function(err, data) {
+//     if (err) {
+//       return console.log(err);
+//     }
+//       files.forEach(function(item, index, array) {
+
+//     var result = data.replace('movie-this',"'movie-this'");
+//     fs.writeFile('random.txt', result, 'utf8', function(err) {
+//         if (err) {
+//            return console.log(err);
+//         };
+//     });
+// });
+//     });
+
+// fs.readFileSync('random.txt', 'utf-8', function(err, data) {
+// console.log("readRandom =" + data);
+// });
+function randomThis() {
 
 
-// console.log("userChoice = " + userChoice);
-// console.log("userOption = " + userOption);
-// console.log("uOption = " + uOption);
-
- // if (userOption == 'do-what-it-says') {
-
-    // get random line from random.txt
-  // function getRandom(random, line_no, callback) {
-  //   var data = fs.readFileSync('random.txt', 'utf8');
-  //   var lines = data.split("\n");
-  //   callback(null, lines[+line_no]);
-  //   console.log("lines = " + lines);
-  //       console.log("data = " + data);
-
-  // }
-
-function randomThis () {
   if (userOption === 'do-what-it-says') {
-  
+
     fs.readFile("random.txt", "utf8", function (error, data) {
+    if(error) throw error;
+      var lines = data.split('\n');
+      randomLine = lines[Math.floor(Math.random()*lines.length)];
+      // console.log("userOption from random = " + userOption);
+      // console.log("randomLine from random = " + randomLine);
 
-      var comma = data.lastIndexOf(",");
-      console.log("n =" + comma);
+      var comma = randomLine.lastIndexOf(",");
+      // console.log("comma = " + comma);
+      // console.log("randomLine = " + randomLine);
 
-        for (i=1; i<comma -1; i++) {
-          part1 += data[i];
-        }
 
-         for (j= (comma+1); j<data.length; j++) {
-          part2 += data[j];
-        }
-       
-        userOption = part1;
-        randomChoice = part2;
+      for (i=1; i<comma -1; i++) {
+        firstPart += randomLine[i];
+        part1 = ("'" + firstPart + "'")
+      }
 
-        // console.log("randomChoice # 2 = " + randomChoice);
-        // console.log("userOption # 2 = " + userOption);
+      for (j= (comma+1); j<randomLine.length; j++) {
+        // console.log("randomLine length = " + randomLine.length);
+        // console.log("data[j] = " + part2);
 
-        if (randomChoice == 'my-tweets') {
-          tweetThis();
-        } 
+        part2 += randomLine[j];
+      }
+     
+      userOption = part1;
+      randomChoice = part2;
 
-        if (userOption == 'spotify-this-song') {
-          spotifyThis();
-        }
+      // console.log("userOption after random = " + part1);
+      // console.log("randomChoice after random = " + part2);
 
-        else if (userOption == 'movie-this') {
-          movieThis();
-        }
+
+      if (userOption == 'spotify-this-song') {
+        spotifyThis();
+      }
+
+      else if (userOption == 'movie-this') {
+        movieThis();
+      }
+      if (randomChoice.indexOf('tweets') >= 0) {
+        userOption = 'my-tweets';
+        tweetThis();
+      } 
     });
   };
 };
+        // console.log("randomChoice # 3 = " + randomChoice);
+        // console.log("userOption # 3 = " + userOption);
+        // console.log("tweetRandom2 = " + tweetRandom);
 
 randomThis();
 
@@ -105,8 +157,7 @@ function movieThis() {
     }
 
      if (userOption === 'movie-this' && randomChoice != null) {
-      userChoice = ("'" + randomChoice + "'");
-      var queryUrl = 'http://www.omdbapi.com/?t=' + userChoice +'&y=&plot=short&tomatoes=true&r=json';
+      var queryUrl = 'http://www.omdbapi.com/?t=' + randomChoice +'&y=&plot=short&tomatoes=true&r=json';
     }
 
       request(queryUrl, function (error, response, body) {
@@ -152,7 +203,7 @@ function spotifyThis() {
     }
 
     if (userOption === 'spotify-this-song' && randomChoice != null) {
-    userChoice = ("'" + randomChoice + "'");
+    userChoice = randomChoice;
     }
   
     spotifyApi.searchTracks('"' + userChoice + '"')
@@ -184,7 +235,7 @@ spotifyThis();
 
 function tweetThis() {
     
-  if (userOption === 'my-tweets' || randomChoice == 'my-tweets') {
+  if (userOption == 'my-tweets') {
 
     userT.get('statuses/user_timeline', {screen_name: 'elise_rothberg', 
       count: 20}, function(error, tweets, response) {
@@ -224,3 +275,15 @@ tweetThis();
 var addToFile = ("\n" + "Entered in console: " + process.argv.slice(2) + "\n" + "\n");
 fs.appendFile('log.txt', addToFile, function (err) {
 });
+      // console.log("comma = " + comma);
+      // console.log("randomLine = " + randomLine);
+
+
+
+// fs.appendFile('random.txt', partOne, function (err) {
+//   var lines2 = data.split('\n');
+//       for (i=1; i<lines2 -1; i++) {
+//         firstPart += lines2[i];
+//         partOne = ("'" + firstPart + "'")
+//       }
+// });

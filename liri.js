@@ -161,7 +161,7 @@ function tweetThis() {
 
         for (var i=0; i<tweets.length; i++){
           var thisTweet = tweets[i];
-           //get the day, day of the month, and month  
+          //get the day, day of the month, and month  
           for (k=0; k<11; k++) {
             postDate += thisTweet.created_at[k];
           }
@@ -171,11 +171,11 @@ function tweetThis() {
           }
               
           var addTweets = ("Tweet: " + tweets[i].text + "\n"
-          + "Posted: " + postDate + year + "\n" + "\n");
+          + "Posted: " + postDate + year + "\n");
           //print out data
           console.log(addTweets);
           //add to log
-          fs.appendFile('log.txt', addTweets, function (err) {
+          fs.appendFile('log.txt', addTweets + "\n", function (err) {
           });
           //clear date information
           postDate = [];

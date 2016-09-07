@@ -71,7 +71,7 @@ function randomThis() {
 randomThis();
 //If movie chosen:
 function movieThis() {
-    //Process choice and send query:
+  //Process choice and send query:
   if (userOption === 'movie-this' && userChoice != null){
 
     userChoice = process.argv.slice(3).join("+");
@@ -94,8 +94,8 @@ function movieThis() {
         if (!error && response.statusCode == 200) {
         
         
-        var addMovie = ("Title: " + JSON.parse(body)["Title"]+ "\n" + "Year: "
-        + JSON.parse(body)["Year"]+ "\n"
+        var addMovie = ("Title: " + JSON.parse(body)["Title"]+ "\n" 
+        + "Year: " + JSON.parse(body)["Year"]+ "\n"
         + "IMDb Rating: " + JSON.parse(body)["imdbRating"] + "\n" 
         + "Country: " + JSON.parse(body)["Country"]+ "\n"
         + "Language: " + JSON.parse(body)["Language"]+ "\n"
@@ -107,9 +107,9 @@ function movieThis() {
          console.log(addMovie);
        }
         //add response to log
-          fs.appendFile('log.txt', addMovie, function (err) {
+        fs.appendFile('log.txt', addMovie, function (err) {
 
-          });
+        });
       });  
     };
   };
